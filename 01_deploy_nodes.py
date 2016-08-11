@@ -44,14 +44,26 @@ class KollaG5k(G5kEngine):
         if len(undeployed) > 0:
             sys.exit(31)
         
-       # Distributed the nodes into roles
-        roles = {}
-        i = 0
-        for role in self.config['openstack']:
-            n = int(self.config['openstack'][role])
-            roles[role] = self.nodes[i:i+n]
-            i += n
-
+        # Distributed the nodes into roles
+        expected_roles = self.config['openstack']
+        roles = dict([[k, []] for k,v in self.config['openstack'].items()])
+        
+        at_least_one = len(expected_roles.keys()) <= self.nodes
+        if not at_least_one:
+            logger.info("We don't have at least one node per role...quitting")
+            sys.exit(31)
+       
+        # distribute nodes in a round robin fashion
+        j = 0
+        while j < len(self.nodes):
+            for role, expected_number in expected_roles.items():
+                if len(roles[role]) < expected_number:
+                    roles[role].append(self.nodes[j])
+                    j = j + 1
+                if j >= len(self.nodes):
+                    break
+        # TODO check if roles = expected 
+        # display a warning ? 
         logger.info("Roles: %s" % roles)
 
         # Get an IP for 'Kolla internal vip address'
