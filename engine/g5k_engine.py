@@ -110,6 +110,9 @@ class G5kEngine(Engine):
         else:
             logger.info("Using running oargrid job %s" % style.emph(self.gridjob))
 
+        # Wait for the job to start
+        EX5.wait_oargrid_job_start(self.gridjob)
+            
         attempts = 0
         self.nodes = None
         while self.nodes is None and attempts < MAX_ATTEMPTS:
