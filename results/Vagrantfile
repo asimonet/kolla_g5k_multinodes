@@ -32,6 +32,14 @@ XPS =[
     :confs => [ "ccy0001-0015-cpt20-nfk50",
                 "ccy0025-0045-cpt20-nfk50",
                 "ccy0100-1000-cpt20-nfk05" ]
+  },
+  {
+    # load test with a clustered rabbitmq
+    :name  => "load-clust-rabbit",
+    :confs => [ "cpt20-nfk50",
+                "cpt20-nfk50-tuned-report-sync-intervals",
+                "cpt20-nfk50-tuned-report-sync-intervals-handshake-timeout",
+                "cpt20-nfk50-cond10-tuned-handshake-timeout"]
   }
  # Add another experimentation
  # ,{ :name  => "vanilla",
