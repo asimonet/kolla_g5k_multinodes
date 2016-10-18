@@ -8,7 +8,7 @@ enable_rally: true
 enable_nova_tmp: false
 
 # will be copied on the rally host to launch scenarios
-rally_scenarios_dir: "{{ playbook_dir }}/../rally/"
+rally_scenarios_dir: "{{ playbook_dir }}/../../rally/"
 rally_scenarios_list: "all-scenarios.txt.sample"
 rally_times: 1
 rally_concurrency: 1

@@ -1,7 +1,7 @@
 # to allow personnal modification
-rally
-inventories
-kolla/
+/rally
+/inventories
+/kolla/
 current
 G5kEngine*/
 reservation.yaml
