@@ -1,9 +1,9 @@
-Jinja2
-execo
-# This is required for kolla:stable/mitaka
-ansible < 2
+Jinja2==2.8
 docopt==0.6.2
-requests
-
+requests==2.11.0
+ansible==1.9.6 # XXX: move to 2 with newtone
 python-openstackclient==2.6.0
 python-neutronclient==4.2.0
+# Romeve me latter
+execo==2.5
+httplib2
